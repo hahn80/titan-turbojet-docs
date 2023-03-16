@@ -85,3 +85,35 @@ The only thing we want to change is the `"method"`. There are the following meth
 - interpolate: Fill nulls with linear interpolation over missing values.
 - knn: Impute the missing values using k-Nearest Neighbors
 - bayesian: Multivariate imputer using BayesianRidge estimator.
+
+# Feature Selections
+
+The function `kfeatures` will take input Polars dataframe and give output as a copy of the dataframe with importance features.
+Here is the sample of json file to run the service:
+```json
+{
+    "input": "domin.arrow",
+    "output": "output.arrow",
+    "operations": [
+    {
+        "operator": "kfeatures",
+        "options":
+        {
+            "columns": [
+                "CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "TAX", "PTRATIO", "B", "LSTAT"
+            ],
+            "target": "PRICE",
+            "method": "sequence"
+        }
+    }]
+}
+```
+There are serveral methods to call for this functions:
+- percentile: Select features according to a percentile of the highest scores
+- random_forest: Select features using random forest regressor.
+- svm: Select features using support vector machines.
+- rfe: Select feature using recursive feature elimination.
+- sequence: Sequential Feature Selection
+- best: This is the default method using SelectKBest with f_regression
+
+Notics: After running kfeature, we can perform diminance analysis.
