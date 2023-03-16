@@ -86,7 +86,35 @@ The only thing we want to change is the `"method"`. There are the following meth
 - knn: Impute the missing values using k-Nearest Neighbors
 - bayesian: Multivariate imputer using BayesianRidge estimator.
 
-# Feature Selections
+## Outlier
+Detect the outliers from a given Polars dataframe.
+Here is a sample json params:
+```json
+{
+    "input": "outlier.arrow",
+    "output": "output.arrow",
+    "operations": [
+        {
+            "operator": "select",
+            "options": {"columns": ["x1", "x2", "x3"]}
+        },
+        {
+            "operator": "outlier",
+            "options": {"outlier_name": "iqr", "columns": ["x1", "x2"]}
+        }
+    ]
+}
+```
+There are many ways to use outlier. We only need to change the `"outlier_name"`. Here is the list of options
+- iso_forest: Isolation Forest Algorithm
+- local_factor: Unsupervised Outlier Detection using the Local Outlier Factor
+- one_svm: Unsupervised Outlier Detection using SVM
+- ledoit_wolf: Oulier using LedoitWolf estimator
+- kernel_density: Outlier using Kernel Density Estimation
+- iqr: Outlier using IQR
+- z_scores: Outlier using Z-Scores.
+
+## Feature Selections
 
 The function `kfeatures` will take input Polars dataframe and give output as a copy of the dataframe with importance features.
 Here is the sample of json file to run the service:
