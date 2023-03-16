@@ -24,4 +24,4 @@ For example:
             String service = "converters";
 ```
 
-To see the options and all posible functionalities, please check transformers.md and converters.md
+To see the options and all posible functionalities, please check [transformers](transformers.md) and [converters](converters.md).
