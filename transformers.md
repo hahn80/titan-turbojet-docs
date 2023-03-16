@@ -81,4 +81,7 @@ Here is the sample of json file to run the service:
 
 ```
 The only thing we want to change is the `"method"`. There are the following methods
-- simple: A simpple imputation with different strategies: 
+- simple: A simpple imputation with different strategies: ‘forward’, ‘backward’, ‘min’, ‘max’, ‘mean’, ‘zero’, ‘one
+- interpolate: Fill nulls with linear interpolation over missing values.
+- knn: Impute the missing values using k-Nearest Neighbors
+- bayesian: Multivariate imputer using BayesianRidge estimator.
