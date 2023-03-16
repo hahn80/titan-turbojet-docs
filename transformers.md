@@ -1,4 +1,4 @@
-# How to call functions with transformer service?
+# How to call functions with transformers service?
 
 Transformers will contain serveral algorithms to run ML tasks.
 
