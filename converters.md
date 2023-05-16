@@ -79,3 +79,40 @@ Next, we perform the linear regression
 ```
 Note that `"columns": ["CRIM", "ZN", "INDUS", "CHAS", "RM", "AGE", "DIS", "PTRATIO", "LSTAT"]` is the list of predictors, and `"target": "PRICE"` is the dependent variable to be predicted.
 The output result can be viewed using website: http://json2table.com
+
+
+## Correlation
+The function will calculate the correlation coefficients of each column vs the *target*.
+
+The input arrow should have the form
+
+|x1|x2|x3|target|
+|---|---|---|---|
+|10|-2|5|-2|
+|2|4|6|4|
+|.|.|.|.|
+|100|30|45|20|
+
+Here is a sample json:
+```json
+{
+    "input": "input.arrow",
+    "output": "output.json",
+    "operations": [
+    {
+        "operator": "select",
+        "options":
+        {
+            "columns": ["x1", "x2", "x3", "target"]
+        }
+    },
+    {
+        "operator": "correlation",
+        "options":
+        {
+            "columns": ["x1", "x2"],
+            "target": "target"
+        }
+    }]
+}
+```
