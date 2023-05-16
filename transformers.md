@@ -114,6 +114,12 @@ There are many ways to use outlier. We only need to change the `"outlier_name"`.
 - iqr: Outlier using IQR
 - z_scores: Outlier using Z-Scores.
 
+**Ghi chú:**
+- Biến columns có thể 1 đến nhiều phần tử.
+- Ví dụ, select ["keys", "x1"] rồi thực hiện outlier với biến "x1". Kết quả trả về sẽ bao gồm cả dữ liệu ngoại biên của "x1" và các keys tương ứng.
+- Kiểu dữ liệu cho columns là numerical (int, float).
+
+
 ## Feature Selections
 
 The function `kfeatures` will take input Polars dataframe and give output as a copy of the dataframe with importance features.
