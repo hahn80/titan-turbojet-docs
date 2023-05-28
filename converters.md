@@ -116,3 +116,76 @@ Here is a sample json:
     }]
 }
 ```
+
+
+Bài toán correlation có nhiều level khác nhau. Sẽ đưa ra cách chạy cho từng level (basic, intermediate1,...)
+
+## Bước level: basic (đọc thêm file doc của Cường để biết nó là cái gì)
+
+Hướng dẫn cách gọi qua file params trong file json
+
+File mẫu correlation.json
+```json
+{
+    "input": "housing.arrow",
+    "output": "output.json",
+    "operations": [
+    {
+        "operator": "select",
+        "options":
+        {
+            "columns": ["CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "PTRATIO", "LSTAT", "PRICE"]
+        }
+    },
+    {
+        "operator": "correlation",
+        "options":
+        {
+            "columns": ["RM", "DIS", "PTRATIO", "LSTAT"],
+            "target": "PRICE",
+            "level": "basic"
+        }
+    }]
+}
+```
+
+Chú thích:
+
+- file `housing.arrow` là file arrow input.
+- trong `operations` có hai bước chính để chọn: `select` và `correlation`.
+- Điểm lưu ý cho `options` của `correlation`. Phần columns là list tên các cột trong dữ liệu cần đưa vào. Biến target là giá trị đầu ra cần tính correlation.
+- Tham số `level` dùng để chỉ cấp bậc dịch vụ cần đưa ra output. Đọc file doc của Cường để biết các bậc này.
+
+Các hiển thị kết quả: Sẽ được cập nhật sau.
+
+File mẫu để chạy level=intermediate1 (bậc 2).
+```json
+{
+    "input": "housing.arrow",
+    "output": "output.json",
+    "operations": [
+    {
+        "operator": "select",
+        "options":
+        {
+            "columns": ["CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "PTRATIO", "LSTAT", "PRICE"]
+        }
+    },
+    {
+        "operator": "correlation",
+        "options":
+        {
+            "columns": ["RM", "DIS", "PTRATIO", "LSTAT"],
+            "target": "PRICE",
+            "level": "intermediate1",
+            "bins": [0.3, 0.6, 0.8]
+        }
+    }]
+}
+```
+
+Dịch vụ này giống như bước basic, nhưng có thêm tham số `bins`. Tham số này cho phép người dùng phân loại các biến theo phần trăm.
+Nếu bins = [0.3, 0.6, 0.8], nghĩa là người dùng muốn tạo các 4 nhóm: Nhóm D: từ 0% - 30% (thấp nhất); nhóm C: từ 30% - 60%; nhóm B: từ 60%-80%; nhóm A: từ 80% - 100% (cao nhất).
+Nên đọc file hướng dẫn của Cường để hiểu các phần trăm này có ý nghĩa gì.
+
+Các hiển thị kết quả: Sẽ được cập nhật sau.
