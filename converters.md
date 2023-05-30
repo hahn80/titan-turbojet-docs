@@ -158,6 +158,8 @@ Chú thích:
 
 Các hiển thị kết quả: Sẽ được cập nhật sau.
 
+## Bước level: intermediate1
+
 File mẫu để chạy level=intermediate1 (bậc 2).
 ```json
 {
@@ -189,3 +191,44 @@ Nếu bins = [0.3, 0.6, 0.8], nghĩa là người dùng muốn tạo các 4 nhó
 Nên đọc file hướng dẫn của Cường để hiểu các phần trăm này có ý nghĩa gì.
 
 Các hiển thị kết quả: Sẽ được cập nhật sau.
+
+
+## Bước level: intermediate2
+File mẫu json
+```json
+{
+    "input": "investing.arrow",
+    "output": "output.json",
+    "operations": [
+    {
+        "operator": "select",
+        "options":
+        {
+            "columns": [
+                "Investing1", "Investing2", "Investing3", "Investing4", "Investing5", "Investing6",
+                "Investing7", "Investing8", "Investing9", "Investing10", "Revenue"
+            ]
+        }
+    },
+    {
+        "operator": "correlation",
+        "options":
+        {
+            "columns": [
+                "Investing1", "Investing2", "Investing3", "Investing4", "Investing5", "Investing6",
+                "Investing7", "Investing8", "Investing9", "Investing10"
+            ],
+            "target": "Revenue",
+            "level": "intermediate2",
+            "lags": [3, 4, 5, 0, 6, 7, 8, 2, 0, 5]
+        }
+    }]
+}
+```
+
+Giải thích tham số:
+`columns` là list các cột cần của biến đầu vào.
+`target`: tên của biến đầu ra.
+`level`: mức độ của dịch vụ (tên phân nhóm trong dịch vụ)
+`lags`: là list các độ dài để lùi cho các biến đầu vào trong `columns`. Nếu biến nào không lùi thì có giá trị 0, biến nào lùi thì có giá trị dương.
+Độ dài của `lags` phải bằng độ dài của `columns`. Nếu không thì nó sẽ báo lỗi.
