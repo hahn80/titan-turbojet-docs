@@ -127,22 +127,22 @@ Hướng dẫn cách gọi qua file params trong file json
 File mẫu correlation.json
 ```json
 {
-    "input": "housing.arrow",
-    "output": "output.json",
+    "input": "/mnt/Data/TitanProjects/Polars/src/data.arrow",
+    "output": "/mnt/Data/TitanProjects/Polars/src/output.json",
     "operations": [
     {
         "operator": "select",
         "options":
         {
-            "columns": ["CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "PTRATIO", "LSTAT", "PRICE"]
+            "columns": ["sum_other_sales_","sum_eu_sales_","sum_jp_sales_","sum_global_sales_","__timestamp","platform"]
         }
     },
     {
         "operator": "correlation",
         "options":
         {
-            "columns": ["RM", "DIS", "PTRATIO", "LSTAT"],
-            "target": "PRICE",
+            "columns": ["sum_eu_sales_","sum_jp_sales_","sum_other_sales_"],
+            "target": "sum_global_sales_",
             "level": "basic"
         }
     }]
@@ -156,7 +156,24 @@ Chú thích:
 - Điểm lưu ý cho `options` của `correlation`. Phần columns là list tên các cột trong dữ liệu cần đưa vào. Biến target là giá trị đầu ra cần tính correlation.
 - Tham số `level` dùng để chỉ cấp bậc dịch vụ cần đưa ra output. Đọc file doc của Cường để biết các bậc này.
 
-Các hiển thị kết quả: Sẽ được cập nhật sau.
+Các hiển thị kết quả:
+```json
+{
+    "target": "sum_global_sales_",
+    "correlation": [
+        {
+            "score": "A",
+            "data": {
+                "sum_eu_sales_": 0.9634813584200301,
+                "sum_jp_sales_": 0.6478133432993226,
+                "sum_other_sales_": 0.8671747166556987
+            }
+        }
+    ]
+}
+```
+Các correlation được phân chia theo score, nếu `score: A` nghĩa là nó cao nhất, tiếp theo là 'B,C,D,F'. Giống như cho điểm học sinh vậy nhé. Điểm A là nhất, còn F thì lo thi lại.
+Các hệ số của `data` cho ta biết mức độ tương quan của các biến. Nó giao động từ 0 đến 1.
 
 ## Bước level: intermediate1
 
