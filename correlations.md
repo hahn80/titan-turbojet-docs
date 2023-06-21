@@ -137,7 +137,7 @@ Nếu `bins = [0.2, 0.5, 0.7]`, nghĩa là người dùng muốn tạo các 4 nh
 
 ## 3. High Intermediate service (intermediate2)
 
-File mẫu intermediate1.json
+File mẫu intermediate2.json
 ```JSON
 {
     "input": "/mnt/Data/TitanProjects/Polars/src/data.arrow",
@@ -203,7 +203,7 @@ Các số trong *shift* là thông tin người dùng đưa vào. Dịch vụ *i
 
 ## 4. Low Advance service (advance1)
 
-File mẫu intermediate1.json
+File mẫu advance1.json
 ```JSON
 {
     "input": "/mnt/Data/TitanProjects/Polars/src/data.arrow",
@@ -281,7 +281,7 @@ Các số trong *shift* là thông tin người dùng đưa vào. Dịch vụ *a
 
 ## 4. High Advance service (advance2)
 
-File mẫu intermediate1.json
+File mẫu advance2.json
 ```JSON
 {
     "input": "data.arrow",
