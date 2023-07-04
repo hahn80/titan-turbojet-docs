@@ -37,6 +37,8 @@ Ví dụ:
 Tức là columns `size` sẽ được apply hai hàm liên tiếp là `mean` và `quantile`. Trong đó hàm quantile có các arguments để thay đổi nên phải bổ sung thêm vào.
 Kết quả đầu ra sẽ hiển thị tên các cột `mean(size)` và `quantile(size)`.
 
+**Supported functions:** count, mode, arg_max, arg_min, std, var, max, min, sum, mean, median, product, n_unique, null_count, firs, last, quantile
+
 
 **Tốc độ là tất cả:**
 
