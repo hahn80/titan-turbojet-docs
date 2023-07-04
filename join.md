@@ -1,0 +1,59 @@
+# JOIN SERVICE
+
+This `transformers` service can be used to join multiple dataframes.
+
+Remember to call the right service:
+```JAVA
+String service = "transformers";
+```
+
+
+Here is a sample json params:
+
+```JSON
+{
+    "input": "blocks.arrow",
+    "output": "output.arrow",
+    "operations": [
+    {
+        "operator": "join",
+        "options":
+        {
+            "right_table": "trans.arrow",
+            "on": "hash=hash",
+            "how": "left"
+        }
+    }]
+}
+```
+
+***Chú thích:***
+
+- *input*: the input arrow file plays the role as the left table.
+- *output*: the output result after joining.
+- *operation*: `join` to join two tables
+  - *right_table*: the arrow file that acts like the right table.
+  - *on*: `name1=name2` meaing that ON Table1.name1 == Table2.name2
+  - *how*: There are 6 types: "inner", "left", "outer", "semi", "anti", "cross"
+
+**Cách gọi nhiều tables:**
+```JSON
+    {
+        "operator": "join",
+        "options":
+        {
+            "right_table": "table2.arrow",
+            "on": "name1=name2",
+            "how": "inner"
+        }
+    },
+    {
+        "operator": "join",
+        "options":
+        {
+            "right_table": "table3.arrow",
+            "on": "name1=name3",
+            "how": "left"
+        }
+    }
+```
