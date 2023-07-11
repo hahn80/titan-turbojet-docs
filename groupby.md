@@ -8,6 +8,7 @@ Here is a sample json params:
 {
     "input": "blocks.arrow",
     "output": "output.arrow",
+    "batch_size": 4000,
     "operations": [
     {
         "operator": "groupby",
