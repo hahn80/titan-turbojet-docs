@@ -29,6 +29,8 @@ Here is a sample json params:
 
 **Chú thích:**
 
+Tham số `by` có kiểu là string hoặc list of strings. Ví dụ: `"by": ["name1", "name2"]`.
+
 Trong tham số aggregates, chúng ta cần chỉ ra các hàm aggregate cho từng column. Một columns có thể áp dụng nhiều hàm cùng một lúc.
 Ví dụ:
 ```JSON
@@ -37,7 +39,7 @@ Ví dụ:
 Tức là columns `size` sẽ được apply hai hàm liên tiếp là `mean` và `quantile`. Trong đó hàm quantile có các arguments để thay đổi nên phải bổ sung thêm vào.
 Kết quả đầu ra sẽ hiển thị tên các cột `mean(size)` và `quantile(size)`.
 
-**Supported functions:** count, mode, arg_max, arg_min, std, var, max, min, sum, mean, median, product, n_unique, null_count, firs, last, quantile
+**Supported functions:** count, mode, arg_max, arg_min, std, var, max, min, sum, mean, median, product, n_unique, null_count, firs, last, quantile, avg
 
 
 **Tốc độ là tất cả:**
