@@ -34,6 +34,8 @@ Here is a sample json params:
 - *operation*: `join` to join two tables
   - *right_table*: the arrow file that acts like the right table.
   - *on*: `name1=name2` meaing that ON Table1.name1 == Table2.name2
+  - *on*: Fully support for multiple conditions. For example `"on": "(T1.A = T2.B) and (T1.C = T2.D or T1.E == T2.F)"`.
+  - I believe that the join with OR will be much faster than real SQL.
   - *how*: There are 6 types: "inner", "left", "outer", "semi", "anti", "cross"
 
 **Cách gọi nhiều tables:**
