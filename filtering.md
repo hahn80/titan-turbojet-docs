@@ -6,16 +6,16 @@ Here is a sample json param:
 
 ```JSON
 {
-    "input": "sql.arrow",
+    "input": "left.arrow",
     "output": "output.arrow",
-    "batch_size": 4000,
-    "reformat_string": true,
+    "batch_size": 1000,
+    "reformat_string": false,
     "operations": [
     {
         "operator": "filtering",
         "options":
         {
-            "where": "CustomerID between 10 and 13"
+            "where": "cr7.subject like '^Thông\\stư' and cr7.id in (713, 718, 1171)"
         }
     }]
 }
@@ -26,7 +26,7 @@ Here is a sample json param:
 Tham số `where` có kiểu là string tương tự như WHERE trong SQL. Nó hỗ trợ các tính năng sau:
 
 - "where": "`name1 BETWEEN A AND B`"
-- "where": "`name1 IN [A, B]`"
+- "where": "`name1 IN (A, B)`"
 - "where": "`name1 = Null`"
 - "where": "`name1 != Null`"
 - "where": "`name1 = ABC`"
