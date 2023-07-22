@@ -15,7 +15,8 @@ Here is a sample json param:
         "operator": "filtering",
         "options":
         {
-            "where": "cr7.subject like '^Thông\\stư' and cr7.id in (713, 718, 1171)"
+            "where": "cr7.subject like '^Thông\\stư' and cr7.id in (713, 718, 1171)",
+            "type_format": {"cr7.subject": "STRING", "cr7.id": "INT"}
         }
     }]
 }
