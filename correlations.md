@@ -279,7 +279,7 @@ Các số trong *shift* là thông tin người dùng đưa vào. Dịch vụ *a
 - Rank D: Tác động không đáng kể: Hệ số chiếm dưới 20%.
 
 
-## 4. High Advance service (advance2)
+## 5. High Advance service (advance2)
 
 File mẫu advance2.json
 ```JSON
