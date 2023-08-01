@@ -12,7 +12,7 @@ Here is the json sample
         "operator": "select",
         "options":
         {
-            "columns": ["date", "price", "supply"]
+            "columns": ["date", "price", "supply", "prod_id", "prod_name"]
         }
     },
     {
@@ -20,6 +20,7 @@ Here is the json sample
         "options":
         {
             "columns": ["price", "supply"],
+            "freezing": ["prod_id", "prod_name"],
             "ds": "date",
             "changepoint_prior_scale": 0.01,
             "daily_seasonality": true,
@@ -32,6 +33,7 @@ Here is the json sample
         "options":
         {
             "columns": ["price", "supply"],
+            "freezing": ["prod_id", "prod_name"],
             "ds": "date",
             "freq": "H",
             "k": 3
@@ -44,6 +46,7 @@ Here is the json sample
 
 For operation **forecast**, we need to understand the following things:
 - `columns`: The list of columns to predict (can be multiple cols).
+- `freezing`: The list of freezing columns (copy over and not predicting).
 - `ds`: Name of your timestamp in your database.
 -  `freq`: The frequency of your timeseries data `ds`. We only accept **H** (for hourly); **D** (for daily); **W** (for weekly); and **M** (for monthly).
 -  `periods`: the length of your future time series wanted to be predicted. 168 hours mean 7 days or one week.
