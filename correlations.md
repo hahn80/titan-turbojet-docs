@@ -89,7 +89,7 @@ File mẫu intermediate1.json
             "columns": ["sum_eu_sales_","sum_jp_sales_","sum_other_sales_"],
             "target": "sum_global_sales_",
             "level": "intermediate1",
-            "bins": [0.2, 0.5, 0.7]
+            "bins": [0.2, 0.3, 0.1]
         }
     }]
 }
@@ -97,8 +97,9 @@ File mẫu intermediate1.json
 
 **Chú thích:**
 
-Tham số `bins` cho phép người dùng phân loại các biến theo phần trăm.
-Nếu `bins = [0.2, 0.5, 0.7]`, nghĩa là người dùng muốn tạo các 4 nhóm: Nhóm D: từ 0% - 20% (thấp nhất); nhóm C: từ 20% - 50%; nhóm B: từ 50%-70%; nhóm A: từ 70% - 100% (cao nhất).
+Tham số `bins` cho phép người dùng phân loại các biến theo phần trăm: [%bad, %no-impact, %good].
+Nếu `bins = [0.2, 0.3, 0.1]`, nghĩa là người dùng muốn lấy ra 3 nhóm: Nhóm 20% tác động xấu, nhóm 30% không có tác động, và nhóm 10% tác động tốt.
+Tổng các số trong bins không vượt quá 1.0.
 Ý nghĩa của phần trăm là khả năng tương quan tính theo phần trăm với biến *target*.
 
 **Cách hiển thị kết quả:**
@@ -120,19 +121,18 @@ Nếu `bins = [0.2, 0.5, 0.7]`, nghĩa là người dùng muốn tạo các 4 nh
             }
         },
         {
-            "rank": "D",
+            "rank": "F",
             "data": {
-                "sum_jp_sales_": 0.6478133432993226
+                "sum_jp_sales_": -0.6478133432993226
             }
         }
     ]
 }
 ```
 
-- Rank A: Tác động mạnh: Hệ số chiếm trên 70%.
-- Rank B: Tác động tương đối mạnh: Hệ số chiếm 50%-70%.
-- Rank C: Tác động nhỏ: Hệ số chiếm 20% đến 50%
-- Rank D: Tác động không đáng kể: Hệ số chiếm dưới 20%.
+- Rank A: Tác động mạnh
+- Rank F: Tác động rất xấu.
+- Rank C: Không có tác động hoặc tác động không đáng kể.
 
 
 ## 3. High Intermediate service (intermediate2)
@@ -223,6 +223,7 @@ File mẫu advance1.json
             "columns": ["sum_eu_sales_","sum_jp_sales_","sum_other_sales_"],
             "target": "sum_global_sales_",
             "level": "advance1",
+            "bins": [0.2, 0.3, 0.1],
             "lags": [5, 6, 7]
         }
     }]
@@ -232,6 +233,7 @@ File mẫu advance1.json
 
 - `lags`: là list các độ dài để lùi cho các biến đầu vào trong `columns`. Kiểu dữ liệu là int.
 - Độ dài của `lags` phải bằng độ dài của `columns`. Nếu không thì nó sẽ báo lỗi.
+- `bins`: xem chú thích trong dịch vụ `intermediate1`.
 
 **Cách hiển thị kết quả:**
 
@@ -258,9 +260,9 @@ File mẫu advance1.json
             }
         },
         {
-            "rank": "D",
+            "rank": "F",
             "data": {
-                "sum_jp_sales_": 0.22770606704601923
+                "sum_jp_sales_": -0.42770606704601923
             },
             "shift": {
                 "sum_jp_sales_": 6
@@ -273,10 +275,9 @@ File mẫu advance1.json
 Trường thông tin *shift* chỉ ra độ lùi của các biến tương ứng. Nếu dữ liệu đưa vào có frequency là giờ (H) thì nó lùi 5 giờ, 6 giờ, 7 giờ.
 Các số trong *shift* là thông tin người dùng đưa vào. Dịch vụ *advance1* không tìm độ lùi tối ưu cho khách hàng.
 
-- Rank A: Tác động mạnh: Hệ số chiếm trên 70%.
-- Rank B: Tác động tương đối mạnh: Hệ số chiếm 50%-70%.
-- Rank C: Tác động nhỏ: Hệ số chiếm 20% đến 50%
-- Rank D: Tác động không đáng kể: Hệ số chiếm dưới 20%.
+- Rank A: Tác động mạnh
+- Rank F: Tác động rất xấu.
+- Rank C: Không có tác động hoặc tác động không đáng kể.
 
 
 ## 5. High Advance service (advance2)
