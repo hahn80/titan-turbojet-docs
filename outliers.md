@@ -2,7 +2,7 @@
 
 Note that, we need to run outlier as `converter` service to get the output as JSON format.
 
-## Outlier
+## Outlier (IQR)
 Here is a sample json params:
 ```json
 {
@@ -39,6 +39,39 @@ Here is a sample json params:
 - *key*: Kiểu dữ liệu string hoac int, float.
 - `iqr_levels`: List of quartiles multiples (float type).
 - `metrics`: support any of these ["mean", "median", "max", "min", "count", "q1", "q3"]
+
+
+## Outlier (Z Scores)
+Here is a sample json params:
+```json
+{
+    "input": "outlier.arrow",
+    "output": "output.json",
+    "operations": [
+    {
+        "operator": "select",
+        "options":
+        {
+            "columns": ["x1", "x2", "x3"]
+        }
+    },
+    {
+        "operator": "outlier_level",
+        "options":
+        {
+            "outlier_name": "z_scores",
+            "columns": ["x2", "x3"],
+            "key": "x1",
+            "z_levels": [1.75, 2.05, 2.7],
+            "metrics": ["q1", "q3", "count", "mean"]
+        }
+    }]
+}
+```
+**Chú thích:**
+- `z_levels`: A list of 3 increasing float numbers. First number from 1.0 to 2.5; Second number from the first one to 3.0, the last value from the second one to 6.0
+- The default values could be [1.75, 2.05, 2.7]
+
 
 
 **Cách hiển thị kết quả:**
