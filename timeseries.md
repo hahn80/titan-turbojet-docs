@@ -16,6 +16,14 @@ Here is the json sample
         }
     },
     {
+        "operator": "fill_null",
+        "options":
+        {
+            "columns": ["price", "supply"],
+            "strategy": "mean"
+        }
+    },
+    {
         "operator": "forecast",
         "options":
         {
@@ -43,6 +51,9 @@ Here is the json sample
 ```
 
 ## Params Explanation:
+
+For the operation **fill_null**, we have the following options for `strategy`:
+("forward", "backward", "min", "max", "mean", "zero")
 
 For operation **forecast**, we need to understand the following things:
 - `columns`: The list of columns to predict (can be multiple cols).
