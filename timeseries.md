@@ -50,6 +50,7 @@ For operation **forecast**, we need to understand the following things:
 - `ds`: Name of your timestamp in your database.
 -  `freq`: The frequency of your timeseries data `ds`. We only accept **H** (for hourly); **D** (for daily); **W** (for weekly); and **M** (for monthly).
 -  `periods`: the length of your future time series wanted to be predicted. 168 hours mean 7 days or one week.
+-  `changepoint_prior_scale`: The float value from 0.005 to 0.5. If this value is higher, it is likely to create more complex model to predict complex data.
 
 For the operation **ts_report**, we create a json report of prediction.
 `columns`, `ds`, `freq' are similar to the above, but `k` is the integer which tells you how many lowest or highest data points that you want to extract.
