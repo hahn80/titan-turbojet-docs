@@ -33,9 +33,6 @@ Here is a json sample
 
 # Params Explanation:
 
-For the operation **fill_null**, we have the following options for `strategy`:
-("forward", "backward", "min", "max", "mean", "zero")
-
 For operation **forecast_by**, we need to understand the following things:
 - `columns`: The list of columns to predict (can be multiple cols).
 - `freezing`: The list of freezing columns (groupby and then make prediction for each group).
