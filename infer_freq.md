@@ -20,7 +20,7 @@ Here is a sample json:
 ```
 **Chú thích các tham số:**
 
-- *ds*: name of the datetime column. Type: String
+- *ds*: name of the datetime column. Type: datetime[64]
 - *strategy*: has two options: `mode` or `min`. Type: String
 	+ `mode`: chọn frequecy theo số đông xảy ra trong data.
 	+ `min`: chọn frequency theo số biến động thời gian nhỏ nhất.
