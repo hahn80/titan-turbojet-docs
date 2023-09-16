@@ -57,5 +57,5 @@ Here is a sample json param:
 
 **Chú thích:**
 
-Tham số `cast_map` là hashmap với key: value là tên column trong dataframe và dtype cho output. Chúng ta có thể dùng các kiểu sau: `INT`; `LONG`; `DOUBLE`.
+Tham số `mapping` là hashmap với key: value là tên column trong dataframe và dtype cho output. Chúng ta có thể dùng các kiểu sau: `INT`; `LONG`; `DOUBLE`.
 
