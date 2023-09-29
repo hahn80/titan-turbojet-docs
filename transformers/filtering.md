@@ -16,7 +16,8 @@ Here is a sample json param:
         "options":
         {
             "where": "cr7.subject like '^Thông\\stư' and cr7.id in (713, 718, 1171)",
-            "type_format": {"cr7.subject": "STRING", "cr7.id": "INT", "cr7.cre_d": "DATE"}
+            "type_format": {"cr7.subject": "STRING", "cr7.id": "INT", "cr7.cre_d": "DATE"},
+			"inverted": true
         }
     }]
 }
@@ -34,3 +35,4 @@ Tham số `where` có kiểu là string tương tự như WHERE trong SQL. Nó h
 - "where": "`name1 >= 10`"
 - "where": "`name1 <= 20`"
 - "where": "`name1 LIKE '^[A,a]\sB{3}'`" -> Regex support.
+- "inverted": true -> To invert the whole where statement.
