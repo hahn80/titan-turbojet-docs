@@ -7,6 +7,7 @@ Remember to call the right service:
 String service = "transformers";
 ```
 
+## For single input file:
 
 Here is a sample json params:
 
@@ -59,3 +60,23 @@ Here is a sample json params:
         }
     }
 ```
+
+## For multiple input files:
+```JSON
+{
+    "input": ["/path1/file1.arrow", "/path2/file2.arrow"],
+    "output": "output.arrow",
+    "operations": [
+    {
+        "operator": "join",
+        "options":
+        {
+            "right_table": ["/path1/right1.arrow", "/path2/right2.arrow"],
+            "on": "hash=hash",
+            "how": "left"
+        }
+    }]
+}
+```
+
+Notices that all files in the input list must have the same `SCHEMA` and all files in right_table must also have the same `SCHEMA`.
