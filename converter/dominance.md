@@ -17,7 +17,8 @@ JSON
         {
             "columns": ["CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "TAX", "PTRATIO", "B", "LSTAT"],
             "target": "PRICE",
-            "bins": [10, 40]
+            "bins": [10, 40],
+			"confidence_level": 0.75
         }
     }]
 }
@@ -29,6 +30,7 @@ JSON
 - target: name of the output column (revenue).
 - bins: list of dominance percentages:
 For example, bins: [10, 40], that means we split the dominance levels into strong and weak groups: 0%-10% (C); 10%-40% (B); and 40%-100% (A).
+- `confidence_level`: a number from 0.5 to 0.95 (this number represent 50% to 95% confidence)
 
 
 **Output result:**
@@ -93,7 +95,8 @@ Json sample
             "columns": ["CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "TAX", "PTRATIO", "B", "LSTAT"],
             "target": "PRICE",
             "weak_percentage": 10,
-            "strong_percentage": 15
+            "strong_percentage": 15,
+			"confidence_level": 0.75
         }
     }]
 }
