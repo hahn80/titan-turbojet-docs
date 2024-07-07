@@ -6,25 +6,52 @@ Here is a sample json params:
 
 ```JSON
 {
-    "input": "blocks.arrow",
-    "output": "output.arrow",
-    "batch_size": 4000,
-    "operations": [
+  "input": "/tmp/tmpzkkflhlp",
+  "output": "/tmp/tmp9nba1aia",
+  "operations": [
     {
-        "operator": "groupby",
-        "options":
-        {
-            "by": "timestamp_month",
-            "aggregates":
+      "operator": "groupby",
+      "options": {
+        "by": "Product",
+        "aggregates": {
+          "Quantity": [
             {
-                "size": [{"func": "mean"},{"func": "quantile", "args": { "quantile": 0.75, "interpolation": "linear"}}],
-                "weight": [{"func": "sum"}],
-                "input_value": [{"func": "var"}, {"func": "std"}],
-                "output_value": [{"func": "min"}, {"func": "max"}],
-                "fee": [{"func": "count"}]
+              "func": "mean",
+              "alias": "Quantity_mean"
+            },
+            {
+              "func": "quantile",
+              "args": {
+                "quantile": 0.75,
+                "interpolation": "linear"
+              },
+              "alias": "Quantity_quantile75"
+            },
+            {
+              "func": "quantile",
+              "args": {
+                "quantile": 0.95,
+                "interpolation": "linear"
+              },
+              "alias": "Quantity_quantile95"
             }
+          ],
+          "Weight": [
+            {
+              "func": "sum",
+              "alias": "Weight_sum"
+            }
+          ],
+          "Price": [
+            {
+              "func": "avg",
+              "alias": "Price_avg"
+            }
+          ]
         }
-    }]
+      }
+    }
+  ]
 }
 ```
 
