@@ -1,6 +1,6 @@
 # Mongo Query Arrow
 
-This `mongodb` service can be used to join multiple dataframes.
+This `mongodb` service can be used to query any collection to arrow file.
 
 Remember to call the right service:
 ```JAVA
