@@ -40,7 +40,7 @@ Here is a sample json params:
 - *input*: the input arrow file plays the role as the left table.
 - *output*: the output result after joining.
 - *operation*: `pivot` to cross values of a table.
-  - *index*: the index column (String Type).
+  - *index*: the index column (List of String Type or String).
   - *columns*: the list of columns List<String>.
   - *valueson*: the list of values List<String>.
   - *agg_func*: Support only one agg function of the form {‘min’, ‘max’, ‘first’, ‘last’, ‘sum’, ‘mean’, ‘median’, ‘len’}. 
@@ -106,7 +106,7 @@ Here is a sample json params:
 - *input*: the input arrow file plays the role as the left table.
 - *output*: the output result after joining.
 - *operation*: `pivot` to cross values of a table.
-  - *index*: the index column (String Type).
+  - *index*: the index column (List of String Type or String).
   - *columns*: the list of columns List<String>.
   - *valueson*: the list of values List<Map<String, String>>. We can have multiple agg functions for one value!
 
