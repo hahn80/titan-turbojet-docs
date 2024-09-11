@@ -92,6 +92,14 @@ and the json looks like:
 
 # Giải thích các tham số:
 
-- `input_values`: HashMap<String, Float>: the values of the inputs variables that the clients want to adjust.
+- `input_values`: HashMap<String, Float>: the values of the input variables that the clients want to adjust.
 
 The result will give you the predicted value; the lower and upper range with the confidence level.
+
+```JSON
+{
+	'predicted_value': 4.482749999999999,
+	'predicted_lower': 4.240032904356177,
+	'predicted_upper': 4.725467095643822
+}
+```
