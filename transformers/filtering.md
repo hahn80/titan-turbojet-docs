@@ -29,6 +29,7 @@ Tham số `where` có kiểu là string tương tự như WHERE trong SQL. Nó h
 
 - "where": "`name1 BETWEEN A AND B`"
 - "where": "`name1 IN (A, B)`"
+- "where": "`name1 NIN (A, B)`" -> Meaning that name1 is not in (A, B).
 - "where": "`name1 = Null`"
 - "where": "`name1 != Null`"
 - "where": "`name1 = ABC`"
